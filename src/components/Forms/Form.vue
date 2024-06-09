@@ -10,13 +10,13 @@
             <input type="text" v-model.number="mensalidade" placeholder="Mensalidade"/> <br>
             <button type="button" @click="addCar">Adicionar Carro</button>
             <br><br>
-            <router-link to="/"><button type="submit">Enviar</button></router-link>
+            <button type="submit">Enviar</button>
         </form>
         <div v-for="veiculo in veiculos" :key="veiculo._id" id="box">
             <p>Carro: </p>
-            <p>{{ veiculo.placa}}</p>
-            <p>{{ veiculo.ano}}</p>
-            <p>{{ veiculo.mensalidade}}</p>
+            <p>{{ veiculo.placa }}</p>
+            <p>{{ veiculo.ano }}</p>
+            <p>{{ veiculo.mensalidade }}</p>
         </div>
     </div>
 </template>
@@ -48,14 +48,13 @@ export default {
             this.placa = "";
             this.ano = "";
             this.mensalidade = "";
-
-            console.log(this.veiculos);
         },
         enviarFormulario() {
             const nome = this.nome;
             const cpf = this.cpf;
             const veiculos = this.veiculos;
             const data = { nome, cpf, veiculos };
+            console.log(data)
 
             fetch('http://localhost:8081/proprietario', {
                 method: 'POST',
@@ -87,7 +86,6 @@ body {
 ul {
     list-style-type: none;
 }
-
 </style>
 
 <style scoped>
